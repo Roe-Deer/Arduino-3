@@ -1,0 +1,38 @@
+int x = 8;
+int y = 12;
+int z = 11;
+int a = A0;
+int b;
+float c;
+int d = 500;
+
+void setup() {
+    pinMode(x, OUTPUT);
+    pinMode(y, OUTPUT);
+    pinMode(z, OUTPUT);
+    pinMode(a, INPUT);
+    Serial.begin(9600);
+}
+
+void loop() {
+    b = analogRead(a);
+    c = (5.0 / 1023.0) * b;
+    Serial.println(c);
+    delay(d);
+
+    if (c < 3) {
+        digitalWrite(x,LOW);
+        digitalWrite(y,LOW);
+        digitalWrite(z,HIGH);
+    }
+    else if (c >= 3 && c <= 4) {
+        digitalWrite(x,LOW);
+        digitalWrite(y,HIGH);
+        digitalWrite(z,LOW);
+    }
+    else if (c > 4) {
+        digitalWrite(x,HIGH);
+        digitalWrite(y,LOW);
+        digitalWrite(z,LOW);
+    }
+}
